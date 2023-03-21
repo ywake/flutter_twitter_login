@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 
 void main() {
   group('$TwitterLogin', () {

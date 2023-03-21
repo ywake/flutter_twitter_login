@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -59,10 +58,8 @@ void main() {
     });
 
     test('can not call constructor with null or empty key or secret', () {
-      expect(() => new TwitterLogin(consumerKey: null, consumerSecret: null),
-          throwsA(anything));
-      expect(() => new TwitterLogin(consumerKey: '', consumerSecret: ''),
-          throwsA(anything));
+      expect(() => new TwitterLogin(consumerKey: null, consumerSecret: null), throwsA(anything));
+      expect(() => new TwitterLogin(consumerKey: '', consumerSecret: ''), throwsA(anything));
     });
 
     test('get isSessionActive - false when currentSession is null', () async {
@@ -78,8 +75,7 @@ void main() {
       ]);
     });
 
-    test('get isSessionActive - true when currentSession is not null',
-        () async {
+    test('get isSessionActive - true when currentSession is not null', () async {
       setMethodCallResponse(kSessionMap);
 
       final bool isSessionActive = await sut.isSessionActive;
@@ -108,8 +104,7 @@ void main() {
     test('get currentSession - parses session correctly', () async {
       setMethodCallResponse(kSessionMap);
 
-      final TwitterSession session =
-          await (sut.currentSession as FutureOr<TwitterSession>);
+      final TwitterSession session = await (sut.currentSession as FutureOr<TwitterSession>);
       expectSessionParsedCorrectly(session);
       expect(log, [
         isMethodCall(
